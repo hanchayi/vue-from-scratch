@@ -6,11 +6,18 @@ const data = reactive({
   world: 'world'
 })
 
+const Button = {
+  render(h) {
+    return h('button', {}, 'click me')
+  }
+}
+
 const App = {
   render(h) {
     return h('div', {}, [
       h('span', { style: 'color: red' }, data.hello),
       h('span', { style: 'color: green' }, data.world),
+      h(Button, {}, 'click me')
     ])
   }
 }
