@@ -8,33 +8,7 @@
 <body>
     <div id="app">
     </div>
-    <script type="module">
-      import { createApp } from './vue.js'
-      import { h } from './h.js'
-      import { patch } from './patch.js'
-
-      const App = {
-        render(h) {
-          return h('div', {}, [
-            h('span', { style: 'color: red' }, 'hello'),
-            h('span', { style: 'color: green' }, 'world'),
-          ])
-        }
-      }
-
-      const app = createApp(App).mount('#app')
-      console.log(app)
-
-      setTimeout(() => {
-        const app1 = h('div', {}, [
-          h('span', { style: 'color: red' }, 'hello1'),
-          h('div', { }, [
-            h('span', {}, 'world1')
-          ]),
-          h('span', { style: 'color: green' }, 'world2'),
-        ])
-        patch(app, app1)
-      }, 1000)
+    <script type="module" src="test.js">
     </script>
 </body>
 </html>

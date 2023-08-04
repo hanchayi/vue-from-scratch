@@ -8,6 +8,7 @@ export function patch(oldNode, newNode) {
     return
   }
 
+  newNode.el = oldNode.el
   // 文本节点
   if (typeof newNode.children === 'string') {
     if (oldNode.children === newNode.children) {
