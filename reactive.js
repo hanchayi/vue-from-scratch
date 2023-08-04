@@ -18,6 +18,9 @@ function flushQueue() {
 }
 
 export function reactive(obj) {
+  /**
+   * [why proxy](https://juejin.cn/post/7204844328111374391#heading-0)
+   */
   return new Proxy(obj, {
     get(_obj, key) {
       observers[obj] = handler
