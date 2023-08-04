@@ -3,12 +3,15 @@ import { reactive } from './reactive.js'
 
 const data = reactive({
   hello: 'hello',
-  world: 'world'
+  world: 'world',
+  type: 'primary'
 })
 
 const Button = {
-  render(h) {
-    return h('button', {}, 'click me')
+  props: [ 'type' ],
+  render(h, props) {
+    let color = props && props.type === 'primary' ? 'blue' : 'red'
+    return h('button', { style: `color: ${color}` }, 'click me')
   }
 }
 
@@ -17,7 +20,16 @@ const App = {
     return h('div', {}, [
       h('span', { style: 'color: red' }, data.hello),
       h('span', { style: 'color: green' }, data.world),
-      h(Button, {}, 'click me')
+      h(Button, {
+        props: {
+          type: data.type
+        },
+        on: {
+          click: () => {
+            data.type = data.type === 'primary' ? '' : 'primary'
+          }
+        }
+      }, 'click me')
     ])
   }
 }

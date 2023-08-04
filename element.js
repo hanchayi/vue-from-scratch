@@ -1,5 +1,8 @@
 export function createElement(vnode) {
   const element = document.createElement(vnode.tag)
+  if (vnode.$on && vnode.$on.click) {
+    element.addEventListener('click', vnode.$on.click)
+  }
   Object.keys(vnode.props).forEach(prop => {
     element.setAttribute(prop, vnode.props[prop])
   })

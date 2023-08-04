@@ -6,7 +6,9 @@ export function h(tag, props, children) {
       children
     }
   } else {
-    const vnode = tag.render(h)
+    const vnode = tag.render(h, props.props)
+    vnode.$props = props.props
+    vnode.$on = props.on
     return vnode
   }
 }

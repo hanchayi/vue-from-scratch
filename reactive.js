@@ -23,7 +23,9 @@ export function reactive(obj) {
    */
   return new Proxy(obj, {
     get(_obj, key) {
-      observers[obj] = handler
+      if (handler) {
+        observers[obj] = handler
+      }
       return obj[key]
     },
     set(_obj, key, value) {
@@ -38,4 +40,5 @@ export function reactive(obj) {
 export function effect(cb) {
   handler = cb
   cb()
+  handler = undefined
 }

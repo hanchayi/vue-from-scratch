@@ -8,6 +8,13 @@ export function patch(oldNode, newNode) {
     return
   }
 
+  // props不一样
+  if (JSON.stringify(oldNode.$props) !== JSON.stringify(newNode.$props)) {
+    mount(newNode, oldNode.el.parentNode)
+    unmount(oldNode)
+    return
+  }
+
   newNode.el = oldNode.el
   // 文本节点
   if (typeof newNode.children === 'string') {
