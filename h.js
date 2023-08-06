@@ -1,3 +1,5 @@
+import { renderComponent } from "./component.js"
+
 export function h(tag, props, children) {
   if (typeof tag === 'string') {
     return {
@@ -6,9 +8,6 @@ export function h(tag, props, children) {
       children
     }
   } else {
-    const vnode = tag.render(h, props.props)
-    vnode.$props = props.props
-    vnode.$on = props.on
-    return vnode
+    return renderComponent(h, tag, props, children)
   }
 }

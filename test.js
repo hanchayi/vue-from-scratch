@@ -11,7 +11,9 @@ const Button = {
   props: [ 'type' ],
   render(h, props) {
     let color = props && props.type === 'primary' ? 'blue' : 'red'
-    return h('button', { style: `color: ${color}` }, 'click me')
+    return h('button', { style: `color: ${color}` }, [
+      h('slot', {}, [])
+    ])
   }
 }
 
